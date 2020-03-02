@@ -1,0 +1,23 @@
+server:
+  #设置端口号
+  port: 28081
+
+spring:
+  application:
+    name: Eureka-provider
+ 
+eureka:
+  client:
+    #声明为client端，并设置Eureka服务器端地址，并将client注册到该地址中
+    service-url:
+      defaultZone: http://eureka1.test.com:18080/eureka,http://eureka2.test.com:28080/eureka,http://eureka3.test.com:38080/eureka
+  instance:
+    instance-id: MyEureka-provider-2
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+
+info:
+  app.name: Eureka-provider-2
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+  description: It is an Eureka provider

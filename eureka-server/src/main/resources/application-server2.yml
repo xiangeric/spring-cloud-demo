@@ -1,0 +1,20 @@
+server:
+  #设置端口号
+  port: 28080
+
+spring:
+  application:
+    name: Eureka-Server-2
+
+eureka:
+  instance:
+    #设置Eureka实例主机名,设置Eureka实例主机名，客户端和服务器端进行交互的地址
+    hostname: eureka2.test.com
+  client:
+    #是否需要将自己注册到注册中心中,因为本身就是一个注册中心,所以不需要将自己注册到注册中心
+    register-with-eureka: false
+    #是否从注册中心中获取注册信息
+    fetch-registry: false
+    service-url:
+      #设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址（单机）。
+      defaultZone: http://eureka1.test.com:18080/eureka/,http://eureka3.test.com:38080/eureka/

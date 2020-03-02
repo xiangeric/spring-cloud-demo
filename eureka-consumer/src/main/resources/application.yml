@@ -1,0 +1,19 @@
+server:
+  port: 18082
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://eureka1.test.com:18080/eureka,http://eureka2.test.com:28080/eureka,http://eureka3.test.com:38080/
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 4000
+
+feign:
+  hystrix:
+    enabled: true
