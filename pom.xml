@@ -13,6 +13,7 @@
     <module>eureka-provider</module>
     <module>eureka-consumer</module>
     <module>common</module>
+    <module>hystrix-dashboard</module>
   </modules>
 
   <name>spring-cloud</name>

@@ -17,3 +17,5 @@ hystrix:
 feign:
   hystrix:
     enabled: true
+
+
