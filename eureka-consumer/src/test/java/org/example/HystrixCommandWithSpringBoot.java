@@ -5,11 +5,7 @@ import com.netflix.hystrix.HystrixEventType;
 import com.netflix.hystrix.HystrixRequestLog;
 import com.netflix.hystrix.strategy.concurrency.HystrixRequestContext;
 import org.example.entity.Student;
-import org.example.hystrix.FallBackService;
-import org.example.hystrix.HystrixCollapserService;
-import org.example.hystrix.HystrixStudentService;
-import org.example.hystrix.MyHystrixConfiguration;
-import org.example.hystrixfeign.StudentHystrixCollapser;
+import org.example.hystrix.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +30,22 @@ public class HystrixCommandWithSpringBoot {
 
     @Autowired
     private HystrixCollapserService collapserService;
+
+
+    @Test
+    public void testCircuitBreakerMethod() throws Exception{
+        String result;
+        for(int i=0;i<20;i++){
+            if(i<5 || i>=10){
+                result = fallBackService.circuitBreakerMethod(i);
+            }else{
+                result = fallBackService.circuitBreakerMethod(i);
+                Thread.sleep(1000);
+            }
+            System.out.println("call times: i="+i+", result="+result+", isCircuitBreakerOpen: "+HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().toArray(new HystrixCommand<?>[1])[0].isCircuitBreakerOpen());
+        }
+    }
+
 
 
 

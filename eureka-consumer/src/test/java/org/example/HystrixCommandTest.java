@@ -26,6 +26,28 @@ public class HystrixCommandTest {
 
 
     /**
+     * 测试熔断器
+     */
+    @Test
+    public void testCircuitBreakerCommand() throws Exception{
+        CircuitBreakerCommand command;
+        String result;
+        for(int i=0;i<20;i++){
+            if(i<5 || i>10){
+                command = new CircuitBreakerCommand(i);
+                result = command.execute();
+            }else{
+                //尝试
+                command = new CircuitBreakerCommand(i);
+                result = command.execute();
+                Thread.sleep(5000);
+            }
+            System.out.println("call times: i="+i+", result="+result+", isCircuitBreakerOpen: "+command.isCircuitBreakerOpen());
+        }
+    }
+
+
+    /**
      * 测试HystrixCollapser
      */
     @Test
