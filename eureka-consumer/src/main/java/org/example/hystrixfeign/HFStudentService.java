@@ -2,7 +2,7 @@ package org.example.hystrixfeign;
 
 import org.example.entity.Resp;
 import org.example.entity.Student;
-import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;

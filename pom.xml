@@ -14,6 +14,7 @@
     <module>eureka-consumer</module>
     <module>common</module>
     <module>hystrix-dashboard</module>
+    <module>zuul</module>
   </modules>
 
   <name>spring-cloud</name>
@@ -26,6 +27,8 @@
     <log4j.version>1.2</log4j.version>
     <lombok.version>1.18.10</lombok.version>
     <logback.version>1.2.3</logback.version>
+    <springboot.version>2.0.3.RELEASE</springboot.version>
+    <springcloud.version>Finchley.RELEASE</springcloud.version>
   </properties>
 
   <dependencyManagement>
@@ -33,14 +36,15 @@
       <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>
-        <version>Dalston.SR1</version>
+        <version>${springcloud.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
-        <version>1.5.9.RELEASE</version>
+        <version>${springboot.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -50,6 +54,7 @@
         <artifactId>logback-core</artifactId>
         <version>${logback.version}</version>
       </dependency>
+
       <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
