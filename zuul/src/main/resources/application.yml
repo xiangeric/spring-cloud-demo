@@ -1,0 +1,87 @@
+server:
+  port: 18084
+
+spring:
+  application:
+    name: zuul-server
+
+eureka:
+  client:
+    #声明为client端，并设置Eureka服务器端地址，并将client注册到该地址中
+    service-url:
+      defaultZone: http://eureka1.test.com:18080/eureka,http://eureka2.test.com:28080/eureka,http://eureka3.test.com:38080/eureka
+  instance:
+    instance-id: zuul.com
+    prefer-ip-address: true
+
+zuul:
+  #设置统一前缀
+  prefix: /myzuul
+  #启用debug
+  debug:
+    request: true
+  # 忽略真实的服务名称实例访问，是一个Set集合，可以指定多个，隐藏全部使用 "*"即可
+  ignored-services: "*"
+  ##routes下面指定代理规则
+  routes:
+    #指定第一个规则，这里的名称任意
+    eureka-provider:
+      #指定的实例名称
+      serviceId: eureka-provider
+      #指定可以访问的路由
+      path: /provider-api/**
+      #设置不允许传递敏感头信息
+      sensitive-headers:
+    myforward:
+      path: /myforward/**
+      url: forward:/hello
+    myurl:
+      #定义路由规则
+      path: /github/**
+      #跳转到github
+      url: https://github.com/
+
+  #取消指定的路由
+  ignored-patterns: /myzuul/provider-api/students
+  host:
+    # 配置zuul的超时时间,默认2秒，
+    connect-timeout-millis: 2000
+    socket-timeout-millis: 2000
+  retryable: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
+
+# zuul使用服务发现的时候，要想让上面的配置生效，必须配置ribbon的超时时间
+ribbon:
+  # 请求处理时间
+  ReadTimeout: 1000
+  # 请求连接时间
+  ConnectTimeout: 1000
+  # 同一个服务的最大重试次数
+  MaxAutoRetries: 1
+  # 对于切换的下一个实例的重试次数
+  MaxAutoRetriesNextServer: 1
+
+#logging:
+#  level:
+#    com.netflix: DEBUG
+
+
+
+
+
+
+
+
+
+
+
+
+
+
