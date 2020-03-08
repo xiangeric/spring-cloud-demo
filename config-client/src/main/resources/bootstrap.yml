@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      #配置在仓库上面的名称
+      name: config
+      profile: dev
+      label: master
+      # config server的地址
+      uri: http://localhost:18085
