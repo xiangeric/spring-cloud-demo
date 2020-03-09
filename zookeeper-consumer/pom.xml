@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <parent>
         <artifactId>spring-cloud</artifactId>
         <groupId>org.example</groupId>
@@ -9,35 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>zookeeper-comsumer</artifactId>
-
-
-    <profiles>
-        <profile>
-            <!--maven打包标识-->
-            <id>server1</id>
-            <properties>
-                <!--自定义属性，在application.yml中使用-->
-                <activatedProperties>server1</activatedProperties>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-        <profile>
-            <id>server2</id>
-            <properties>
-                <activatedProperties>server2</activatedProperties>
-            </properties>
-        </profile>
-        <profile>
-            <id>server3</id>
-            <properties>
-                <activatedProperties>server3</activatedProperties>
-            </properties>
-        </profile>
-    </profiles>
-
+    <artifactId>zookeeper-consumer</artifactId>
 
     <dependencies>
 
@@ -64,12 +37,6 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
 
@@ -79,13 +46,17 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-
     </dependencies>
-
 
 </project>

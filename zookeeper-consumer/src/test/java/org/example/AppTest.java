@@ -1,4 +1,5 @@
-import org.example.ZKComsumerApplication;
+package org.example;
+
 import org.example.entity.Resp;
 import org.example.entity.Student;
 import org.junit.Test;
@@ -12,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-@SpringBootTest(classes = ZKComsumerApplication.class)
+@SpringBootTest(classes = ZKConsumerApplication.class)
 @RunWith(SpringRunner.class)
 public class AppTest {
 

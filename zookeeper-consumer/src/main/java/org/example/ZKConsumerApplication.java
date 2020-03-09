@@ -11,10 +11,10 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class ZKComsumerApplication {
+public class ZKConsumerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ZKComsumerApplication.class,args);
+        SpringApplication.run(ZKConsumerApplication.class,args);
     }
 
 
