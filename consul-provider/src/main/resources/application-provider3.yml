@@ -1,0 +1,10 @@
+server:
+  #设置端口号
+  port: 38087
+spring:
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}

@@ -18,7 +18,9 @@
     <module>config-server</module>
     <module>config-client</module>
     <module>zookeeper-provider</module>
-    <module>zookeeper-comsumer</module>
+    <module>zookeeper-consumer</module>
+    <module>consul-provider</module>
+    <module>consul-consumer</module>
   </modules>
 
   <name>spring-cloud</name>
