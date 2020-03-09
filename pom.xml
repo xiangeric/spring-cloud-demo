@@ -17,6 +17,8 @@
     <module>zuul</module>
     <module>config-server</module>
     <module>config-client</module>
+    <module>zookeeper-provider</module>
+    <module>zookeeper-comsumer</module>
   </modules>
 
   <name>spring-cloud</name>
@@ -78,6 +80,7 @@
   </dependencyManagement>
 
   <build>
+    <finalName>spring-cloud-demo</finalName>
     <resources>
       <!--过滤src/main/resources文件-->
       <resource>
@@ -96,7 +99,17 @@
           </delimiters>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <fork>true</fork>
+          <addResources>true</addResources>
+        </configuration>
+      </plugin>
     </plugins>
+
+
   </build>
 
 

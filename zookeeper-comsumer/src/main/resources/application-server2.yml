@@ -1,0 +1,7 @@
+server:
+  #设置端口号
+  port: 28087
+spring:
+  cloud:
+    zookeeper:
+      connect-string: 127.0.0.1:2181

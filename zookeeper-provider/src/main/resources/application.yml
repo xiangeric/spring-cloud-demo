@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    active: @activatedProperties@
+  application:
+    name: zookeeper-provider
