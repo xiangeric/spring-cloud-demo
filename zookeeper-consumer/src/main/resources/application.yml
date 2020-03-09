@@ -3,7 +3,7 @@ server:
   port: 18087
 spring:
   application:
-    name: zookeeper-comsumer
+    name: zookeeper-consumer
   cloud:
     zookeeper:
       connect-string: 127.0.0.1:2181
