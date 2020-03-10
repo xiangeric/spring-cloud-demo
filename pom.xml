@@ -21,6 +21,7 @@
     <module>zookeeper-consumer</module>
     <module>consul-provider</module>
     <module>consul-consumer</module>
+    <module>gateway</module>
   </modules>
 
   <name>spring-cloud</name>
