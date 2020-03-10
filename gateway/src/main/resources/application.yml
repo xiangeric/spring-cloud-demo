@@ -1,0 +1,39 @@
+server:
+  port: 18089
+spring:
+  application:
+    name: gateway
+  cloud:
+    #配置Consul
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+    #配置gateway
+    gateway:
+      discovery:
+        locator:
+          #启动动态路由
+          enabled: true
+      routes:
+        #路由ID，没有固定规则但要求唯一，一般为服务名
+        - id: consul-provider
+          #匹配后提供服务的路由地址
+          uri: lb://consul-provider
+           #配置断言，可以配置多个
+          predicates:
+            #当/provider-api/**被匹配，则路由到uri指定的地址
+            - Path=/provider-api/**
+          filters:
+            - StripPrefix=1
+#        #路由ID，没有固定规则但要求唯一，一般为服务名
+#        - id: consul-provider2
+#          #匹配后提供服务的路由地址
+#          uri: http://127.0.0.1:18087
+#          #配置断言，可以配置多个
+#          predicates:
+#            #当/provider-api/**被匹配，则路由到uri指定的地址
+#            - Path=/provider-api/**
+#          filters:
+#            - StripPrefix=1
