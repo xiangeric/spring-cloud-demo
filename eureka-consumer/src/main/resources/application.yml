@@ -19,3 +19,7 @@ feign:
     enabled: true
 
 
+logging:
+  level:
+    #指定feign debug日志接口
+    org.example.feign.StudentService: debug

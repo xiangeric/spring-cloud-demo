@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @FeignClient(value = "EUREKA-PROVIDER",fallbackFactory = StudentServiceFallbackFactory.class)
+//@FeignClient(value = "EUREKA-PROVIDER",fallback = HFStudentClientService.class)
 @RequestMapping("/students")
 public interface HFStudentService {
 
