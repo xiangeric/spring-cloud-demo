@@ -24,6 +24,8 @@
     <module>gateway</module>
     <module>springbus-config-server</module>
     <module>springbus-config-client</module>
+    <module>stream-provider</module>
+    <module>stream-consumer</module>
   </modules>
 
   <name>spring-cloud</name>
