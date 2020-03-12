@@ -1,0 +1,26 @@
+server:
+  port: 18085
+
+spring:
+  application:
+    name: config-server
+  #配置spring cloud
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/xiangeric/config-demo-repository.git
+    #rabbitmq相关配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+management:
+  endpoints:
+    web:
+      exposure:
+        #打开全部请求bus刷新端点
+        include: 'bus-refresh'
+    health:
+      show-details: always

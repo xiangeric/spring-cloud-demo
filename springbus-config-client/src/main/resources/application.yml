@@ -1,0 +1,15 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        #打开全部请求端点
+#        include: refresh,health,info #打开部分
+        include: "*"
+    health:
+      show-details: always
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest

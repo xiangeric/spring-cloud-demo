@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    config:
+      #配置在仓库上面的名称，会获取config-{profile}.yml
+      name: config
+      profile: dev
+      label: master
+      # config server的地址，会先从config server中获取服务，并通过config server
+      # 从git仓库中拉取配置
+      uri: http://localhost:18085
