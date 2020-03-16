@@ -11,6 +11,26 @@
 
     <artifactId>stream-consumer</artifactId>
 
+    <profiles>
+        <profile>
+            <!--maven打包标识-->
+            <id>receiver1</id>
+            <properties>
+                <activatedProperties>receiver1</activatedProperties>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>receiver2</id>
+            <properties>
+                <activatedProperties>receiver2</activatedProperties>
+            </properties>
+        </profile>
+    </profiles>
+
+
     <dependencies>
 
         <!--加入Spring Stream对RabbitMQ支持-->

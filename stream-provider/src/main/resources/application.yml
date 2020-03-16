@@ -21,3 +21,15 @@ spring:
           destination: exchangeName #表示要使用的Exchange名称定义
           content-type: application/json #设置消息类型
           binder: defaultRabbit #设置要绑定的消息服务的具体位置，与前面定义的一致
+        get:
+          destination: GET_FILE_DIST
+          content-type: text/plain #设置消息类型
+          binder: defaultRabbit #设置要绑定的消息服务的具体位置，与前面定义的一致
+        back:
+          destination: BACK_FILE_DIST
+          content-type: image/jpeg #设置消息类型
+          binder: defaultRabbit #设置要绑定的消息服务的具体位置，与前面定义的一致
+        streamOutput:
+          destination: STREAM_DEMO_DIST
+          content-type: text/plain
+          binder: defaultRabbit
