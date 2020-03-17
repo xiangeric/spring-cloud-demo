@@ -1,0 +1,36 @@
+server:
+  port: 18090
+
+spring:
+  application:
+    name: stream-provider
+  cloud:
+    stream: #在此处配置要绑定的rabbitmq的服务信息
+      binders:
+        defaultRabbit: #要定义的名称，用于binding整合
+          type: rabbit #消息组件类型
+          environment: #设置rabbitmq的相关的环境配置
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
+      bindings: #服务的整合处理
+        output: #这个名字是一个channel的名称
+          destination: exchangeName #表示要使用的Exchange名称定义
+          content-type: application/json #设置消息类型
+          binder: defaultRabbit #设置要绑定的消息服务的具体位置，与前面定义的一致
+        get:
+          destination: GET_FILE_DIST
+          content-type: text/plain #设置消息类型
+          binder: defaultRabbit #设置要绑定的消息服务的具体位置，与前面定义的一致
+        back:
+          destination: BACK_FILE_DIST
+          content-type: image/jpeg #设置消息类型
+          binder: defaultRabbit #设置要绑定的消息服务的具体位置，与前面定义的一致
+        streamOutput:
+          destination: STREAM_DEMO_DIST
+          content-type: text/plain
+          binder: defaultRabbit
+          producer:
