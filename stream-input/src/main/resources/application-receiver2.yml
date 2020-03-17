@@ -36,3 +36,10 @@ spring:
           content-type: text/plain
           binder: defaultRabbit
           group: streamGroup
+          consumer:
+            #设置当前实例的索引号
+            instanceIndex: 1
+            #设置实例总数
+            instanceCount: 2
+            #支持接收分区数据
+            partitioned: true

@@ -34,3 +34,19 @@ spring:
           content-type: text/plain
           binder: defaultRabbit
           producer:
+            #设置发送分区数据
+            partitionKeyExpression: '0'
+            #设置实例总数
+            partitionCount: 2
+        #模拟自我消费
+        selfConsumeOutput:
+          destination: SELF_CONSUME_DIST
+          binder: defaultRabbit
+        selfConsumeInput:
+          destination: SELF_CONSUME_DIST
+          binder: defaultRabbit
+
+
+
+
+

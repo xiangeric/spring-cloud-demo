@@ -12,11 +12,11 @@ public class StreamTest {
 
     @Autowired
     private StreamSender streamSender;
-
+//
     @Test
     public void test(){
         String message = "message%s";
-        for(int i=0;i<5;i++){
+        for(int i=0;i<1;i++){
             streamSender.send(String.format(message,i));
         }
     }
