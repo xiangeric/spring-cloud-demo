@@ -38,8 +38,8 @@
     <log4j.version>1.2</log4j.version>
     <lombok.version>1.18.10</lombok.version>
     <logback.version>1.2.3</logback.version>
-    <springboot.version>2.0.3.RELEASE</springboot.version>
-    <springcloud.version>Finchley.RELEASE</springcloud.version>
+    <springboot.version>2.2.5.RELEASE</springboot.version>
+    <springcloud.version>Hoxton.SR3</springcloud.version>
   </properties>
 
   <dependencyManagement>
