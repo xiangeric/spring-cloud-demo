@@ -1,4 +1,4 @@
-package org.example.stream;
+package org.example.stream.channel;
 
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.messaging.SubscribableChannel;

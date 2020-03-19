@@ -43,3 +43,8 @@ spring:
             instanceCount: 2
             #支持接收分区数据
             partitioned: true
+        #case: application-level
+        appErrHandlerInput:
+          destination: APP_ERR_HANDLER_DIST
+          binder: defaultRabbit
+          group: myGroup

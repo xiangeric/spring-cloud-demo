@@ -1,4 +1,4 @@
-package org.example.stream;
+package org.example.stream.component;
 
 
 import lombok.extern.slf4j.Slf4j;

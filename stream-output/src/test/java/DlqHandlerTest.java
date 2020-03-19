@@ -1,5 +1,5 @@
 import org.example.StreamProviderApplication;
-import org.example.stream.component.StreamSender;
+import org.example.stream.component.DlqSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,16 +8,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest(classes = StreamProviderApplication.class)
 @RunWith(SpringRunner.class)
-public class StreamTest {
+public class DlqHandlerTest {
 
     @Autowired
-    private StreamSender streamSender;
-//
+    private DlqSender sender;
+
     @Test
     public void test(){
-        String message = "message%s";
-        for(int i=0;i<1;i++){
-            streamSender.send(String.format(message,i));
-        }
+        sender.send("dlq message");
     }
 }

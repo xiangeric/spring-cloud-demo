@@ -1,6 +1,6 @@
 import org.example.StreamProviderApplication;
 import org.example.entity.Student;
-import org.example.stream.MessageSender;
+import org.example.stream.component.MessageSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

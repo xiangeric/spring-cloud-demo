@@ -19,10 +19,12 @@ spring:
                 username: guest
                 password: guest
       bindings: #服务的整合处理
+        #case: simple demo
         input: #这个名字是一个channel的名称
           destination: exchangeName #表示要使用的Exchange名称定义
           content-type: application/json #设置消息类型
           binder: defaultRabbit
+        #case:发送文件名称，由中间件返回文件信息
         get:
           destination: GET_FILE_DIST
           content-type: text/plain
@@ -31,6 +33,7 @@ spring:
           destination: BACK_FILE_DIST
           content-type: image/jpeg
           binder: defaultRabbit
+        #case: 实现分组分区
         streamInput:
           destination: STREAM_DEMO_DIST
           content-type: text/plain
@@ -43,4 +46,42 @@ spring:
             instanceCount: 2
             #支持接收分区数据
             partitioned: true
+        #case: application-level
+        appErrHandlerInput:
+          destination: APP_ERR_HANDLER_DIST
+          binder: defaultRabbit
+          group: myGroup
+          consumer:
+            maxAttempts: 1
+        #case: dlq 异常消息之死信队列处理
+        dlqInput:
+          destination: EXAMPLE_DLQ_DIST
+          binder: defaultRabbit
+          group: dlqGroup
+          consumer:
+            maxAttempts: 1
+        #case: 异常重新入队
+        requeueInput:
+          destination: REQUEUE_DIST
+          binder: defaultRabbit
+          group: requeueGroup
+          consumer:
+            #禁止重试
+            maxAttempts: 1
+
+      rabbit:
+        bindings:
+          # channelName为dlqInput设置
+          dlqInput:
+            consumer:
+              #启用死信队列
+              auto-bind-dlq: true
+              republish-to-dlq: true
+          # channelName为requeueInput设置
+          requeueInput:
+            consumer:
+              requeue-rejected: true
+
+
+
 

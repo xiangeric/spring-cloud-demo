@@ -1,4 +1,4 @@
-package org.example.stream;
+package org.example.stream.channel;
 
 import org.example.constants.FileConstants;
 import org.springframework.cloud.stream.annotation.Input;
@@ -6,14 +6,17 @@ import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.SubscribableChannel;
 
+/**
+ * 文件处理
+ **/
 public interface FileProcessor {
 
-    //监听获取文件请求
-    @Input(FileConstants.GET)
-    SubscribableChannel get();
+    //向外部请求获得文件信息
+    @Output(FileConstants.GET)
+    MessageChannel get();
 
-    //向外部文件信息
-    @Output(FileConstants.BACK)
-    MessageChannel back();
+    //监听文件传回信息
+    @Input(FileConstants.BACK)
+    SubscribableChannel back();
 
 }

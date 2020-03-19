@@ -2,8 +2,7 @@ package org.example.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.constants.FileConstants;
-import org.example.entity.Student;
-import org.example.stream.FileProcessor;
+import org.example.stream.channel.FileProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.stream.annotation.EnableBinding;
@@ -17,7 +16,6 @@ import org.springframework.util.MimeTypeUtils;
 import org.springframework.util.StringUtils;
 
 import java.io.BufferedOutputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.UUID;

@@ -17,10 +17,12 @@ spring:
                 username: guest
                 password: guest
       bindings: #服务的整合处理
+        #case: simple demo
         output: #这个名字是一个channel的名称
           destination: exchangeName #表示要使用的Exchange名称定义
           content-type: application/json #设置消息类型
           binder: defaultRabbit #设置要绑定的消息服务的具体位置，与前面定义的一致
+        #case:发送文件名称，由中间件返回文件信息
         get:
           destination: GET_FILE_DIST
           content-type: text/plain #设置消息类型
@@ -29,6 +31,7 @@ spring:
           destination: BACK_FILE_DIST
           content-type: image/jpeg #设置消息类型
           binder: defaultRabbit #设置要绑定的消息服务的具体位置，与前面定义的一致
+        #case: 实现分组分区
         streamOutput:
           destination: STREAM_DEMO_DIST
           content-type: text/plain
@@ -38,13 +41,28 @@ spring:
             partitionKeyExpression: '0'
             #设置实例总数
             partitionCount: 2
-        #模拟自我消费
+        #case: 实现自我消费
         selfConsumeOutput:
           destination: SELF_CONSUME_DIST
           binder: defaultRabbit
         selfConsumeInput:
           destination: SELF_CONSUME_DIST
           binder: defaultRabbit
+        #case: application-level
+        appErrHandlerOutput:
+          destination: APP_ERR_HANDLER_DIST
+          binder: defaultRabbit
+        #case: 发送信息，消费端是抛出异常，并发送信息到死信队列
+        dlqOutput:
+          destination: EXAMPLE_DLQ_DIST
+          binder: defaultRabbit
+        #case: 重新入队
+        requeueOutput:
+          destination: REQUEUE_DIST
+          binder: defaultRabbit
+
+
+
 
 
 
