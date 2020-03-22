@@ -3,13 +3,10 @@ package org.example.stream.channel;
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.messaging.SubscribableChannel;
 
-/**
- * 死信队列Sink
- **/
-public interface DlqSink {
+public interface DelaySink {
 
-    public final static String INPUT = "dlqInput";
+    public static final String DELAY_INPUT = "delayInput";
 
-    @Input(INPUT)
+    @Input(DELAY_INPUT)
     SubscribableChannel input();
 }

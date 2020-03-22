@@ -24,6 +24,8 @@ spring:
           destination: exchangeName #表示要使用的Exchange名称定义
           content-type: application/json #设置消息类型
           binder: defaultRabbit
+          comsumer:
+
         #case:发送文件名称，由中间件返回文件信息
         get:
           destination: GET_FILE_DIST
@@ -68,7 +70,18 @@ spring:
           consumer:
             #禁止重试
             maxAttempts: 1
-
+        #case: 测试PollableMessageSource
+        pollableInput:
+          destination: POLLABLE_DIST
+          binder: defaultRabbit
+          group: pollableGroup
+          consumer:
+            #禁止重试
+            maxAttempts: 1
+        delayInput:
+          destination: DELAY_DIST
+          binder: defaultRabbit
+          group: delayGroup
       rabbit:
         bindings:
           # channelName为dlqInput设置
@@ -81,7 +94,15 @@ spring:
           requeueInput:
             consumer:
               requeue-rejected: true
-
+              #启用死信队列
+              auto-bind-dlq: true
+              republish-to-dlq: true
+          pollableInput:
+            consumer:
+              requeue-rejected: true
+          delayInput:
+            consumer:
+              delayed-exchange: true
 
 
 

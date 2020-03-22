@@ -19,4 +19,10 @@ public class DlqReceiver {
         log.info(message.getPayload());
         throw new RuntimeException("error receive:"+message);
     }
+
+    @ServiceActivator(inputChannel = "EXAMPLE_DLQ_DIST.dlqGroup.errors")
+    public void handleError(Message<?> message) {
+        System.out.println("Handling ERROR: " + message);
+        throw new RuntimeException ("Message consumer failed!");
+    }
 }

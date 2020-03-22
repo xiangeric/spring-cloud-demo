@@ -60,6 +60,19 @@ spring:
         requeueOutput:
           destination: REQUEUE_DIST
           binder: defaultRabbit
+        #case:测试PollableMessageSource
+        pollableOutput:
+          destination: POLLABLE_DIST
+          binder: defaultRabbit
+        #case: 延迟消息
+        delayOutput:
+          destination: DELAY_DIST
+          binder: defaultRabbit
+      rabbit:
+        bindings:
+          delayOutput:
+            producer:
+              delayed-exchange: true
 
 
 
